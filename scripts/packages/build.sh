@@ -43,19 +43,30 @@ show_help() {
 # Function to build a project
 build() {
     local project_path="$1"
+    local package_version="$2"
     local abs_project_path="$ROOT_DIR/$project_path"
-    echo "🔨 Building: $abs_project_path"
-    dotnet build "$abs_project_path" --configuration Release
+
+    echo "🔨 Building: $abs_project_path (Version: $package_version)"
+    dotnet build "$abs_project_path" --configuration Release -p:Version="$package_version"
 }
 
-# Function to package a project
+# Function to package a project with README.md
 pack() {
     local project_path="$1"
     local package_version="$2"
     local abs_project_path="$ROOT_DIR/$project_path"
-    local package_name=$(basename "$abs_project_path" .csproj)  # Extracts package name
-    echo "📦 Creating NuGet package: $package_name (Version: $package_version)"
-    dotnet pack "$abs_project_path" --configuration Release --output "$OUTPUT_DIR" /p:Version="$package_version"
+    local project_dir="$(dirname "$abs_project_path")"  # Get project directory
+    local abs_readme_path="$project_dir/README.md"      # Assume README.md is in the same directory
+    local package_name=$(basename "$abs_project_path" .csproj)  # Extract package name
+
+    # Check if README.md exists
+    if [[ -f "$abs_readme_path" ]]; then
+        echo "📝 Including README.md: $abs_readme_path"
+        dotnet pack "$abs_project_path" --configuration Release --output "$OUTPUT_DIR" -p:Version="$package_version" -p:PackageReadmeFile="$abs_readme_path"
+    else
+        echo "⚠️ WARNING: README.md not found in $project_dir. Packaging without README."
+        dotnet pack "$abs_project_path" --configuration Release --output "$OUTPUT_DIR" -p:Version="$package_version"
+    fi
 }
 
 # Function to publish a NuGet package
@@ -78,6 +89,7 @@ publish() {
 clean() {
     local project_path="$1"
     local abs_project_path="$ROOT_DIR/$project_path"
+    
     echo "🧹 Cleaning: $abs_project_path"
     dotnet clean "$abs_project_path"
     rm -rf "$OUTPUT_DIR"
@@ -98,9 +110,9 @@ process_packages() {
         project_path=$(echo "$line" | awk '{print $3}')
 
         case "$command" in
-            build) build "$project_path" ;;
-            pack) build "$project_path" && pack "$project_path" "$package_version" ;;
-            publish) build "$project_path" && pack "$project_path" "$package_version" && publish "$package_name" "$package_version" ;;
+            build) build "$project_path" "$package_version" ;;
+            pack) build "$project_path" "$package_version" && pack "$project_path" "$package_version" ;;
+            publish) build "$project_path" "$package_version" && pack "$project_path" "$package_version" && publish "$package_name" "$package_version" ;;
             clean) clean "$project_path" ;;
             *) show_help ;;
         esac

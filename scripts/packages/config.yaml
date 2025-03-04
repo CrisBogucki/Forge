@@ -1,4 +1,8 @@
 packages:
   - name: Forge.Core.Logger
-    version: 1.0.1
     path: packages/core/Forge.Core.Logger/Forge.Core.Logger.csproj
+    version: 1.0.1
+  - name: Forge.Core.Mediator
+    path: packages/core/Forge.Core.Mediator/Forge.Core.Mediator.csproj
+    version: 1.0.1
+    
