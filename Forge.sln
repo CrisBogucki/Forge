@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ForgeSampleOffers", "ForgeS
 		areas\ForgeSampleOffers\Directory.Packages.props = areas\ForgeSampleOffers\Directory.Packages.props
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgeSampleOffers.App", "ForgeSampleOffers.App\ForgeSampleOffers.App.csproj", "{29430F68-E42B-4216-9E0B-5591E1CB14D1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgeSampleOffers.WebApi", "areas\ForgeSampleOffers\ForgeSampleOffers.WebApi\ForgeSampleOffers.WebApi.csproj", "{776E50B8-F7FB-4D0F-9D81-D085D9C2583A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgeSampleOffers.Tests", "areas\ForgeSampleOffers\ForgeSampleOffers.Tests\ForgeSampleOffers.Tests.csproj", "{BDB684CA-CC05-4CF8-B908-7D2D8FF7370B}"
@@ -40,6 +38,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "packages", "packages", "{82
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "areas", "areas", "{80A2AB18-9AF6-4BF5-BF43-D76141B6B3A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgeSampleOffers.App", "areas\ForgeSampleOffers\ForgeSampleOffers.App\ForgeSampleOffers.App.csproj", "{C9FC844A-2179-4814-8A03-359D720388B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,7 +47,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FAAAA127-1A28-4E01-8322-809B94155CA8} = {C71BBFE2-8CDA-462C-A4EA-3931B943E307}
-		{29430F68-E42B-4216-9E0B-5591E1CB14D1} = {FAAAA127-1A28-4E01-8322-809B94155CA8}
 		{776E50B8-F7FB-4D0F-9D81-D085D9C2583A} = {FAAAA127-1A28-4E01-8322-809B94155CA8}
 		{BDB684CA-CC05-4CF8-B908-7D2D8FF7370B} = {FAAAA127-1A28-4E01-8322-809B94155CA8}
 		{F7E31E78-1130-4E76-B2AE-4561ECB8C8FE} = {FAAAA127-1A28-4E01-8322-809B94155CA8}
@@ -59,12 +58,9 @@ Global
 		{3564DA7E-DA26-4761-9D01-4D8F32AD67CD} = {FA30BDA0-8EED-4B0C-9620-77F609FAC10F}
 		{823BAB7E-18AD-4732-89C1-4531129642B9} = {68FAE391-06F6-43E3-A947-8B83A88268C4}
 		{80A2AB18-9AF6-4BF5-BF43-D76141B6B3A5} = {68FAE391-06F6-43E3-A947-8B83A88268C4}
+		{C9FC844A-2179-4814-8A03-359D720388B1} = {FAAAA127-1A28-4E01-8322-809B94155CA8}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{29430F68-E42B-4216-9E0B-5591E1CB14D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{29430F68-E42B-4216-9E0B-5591E1CB14D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{29430F68-E42B-4216-9E0B-5591E1CB14D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{29430F68-E42B-4216-9E0B-5591E1CB14D1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{776E50B8-F7FB-4D0F-9D81-D085D9C2583A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{776E50B8-F7FB-4D0F-9D81-D085D9C2583A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{776E50B8-F7FB-4D0F-9D81-D085D9C2583A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -97,5 +93,9 @@ Global
 		{3564DA7E-DA26-4761-9D01-4D8F32AD67CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3564DA7E-DA26-4761-9D01-4D8F32AD67CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3564DA7E-DA26-4761-9D01-4D8F32AD67CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9FC844A-2179-4814-8A03-359D720388B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9FC844A-2179-4814-8A03-359D720388B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9FC844A-2179-4814-8A03-359D720388B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9FC844A-2179-4814-8A03-359D720388B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
