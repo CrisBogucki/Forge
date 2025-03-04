@@ -1,12 +1,7 @@
 <Project>
     <PropertyGroup>
-        <DefaultNugetPackageDirectory>1.0.1</DefaultNugetPackageDirectory>
+        <DefaultNugetPackageVersion>1.0.5</DefaultNugetPackageVersion>
     </PropertyGroup>
-
-    <!-- App -->
-    <ItemGroup>
-
-    </ItemGroup>
     
     <!-- Tests -->
     <ItemGroup>
@@ -18,7 +13,7 @@
     
     <!-- Forge nuget version -->
     <ItemGroup>
-        
+        <PackageVersion Include="Forge.Core.Logger" Version="$(DefaultNugetPackageVersion)"/>
     </ItemGroup>
     
 </Project>

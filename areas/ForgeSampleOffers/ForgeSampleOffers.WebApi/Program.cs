@@ -1,10 +1,10 @@
+using Forge.Core.Logger.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddForgeLogger();
 
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
 
 app.UseHttpsRedirection();
 
@@ -25,6 +25,12 @@ app.MapGet("/weatherforecast", () =>
         .ToArray();
     return forecast;
 });
+
+var _logger = app.Services.GetRequiredService<Forge.Core.Logger.ILogger>();
+
+_logger.LogInformation("Aplikacja uruchomiona!");
+_logger.LogWarning("Ostrzeżenie!");
+_logger.LogError("Błąd!");
 
 app.Run();
 

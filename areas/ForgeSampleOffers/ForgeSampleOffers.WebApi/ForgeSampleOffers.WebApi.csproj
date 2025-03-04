@@ -16,7 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Forge.Core.Logger" Version="1.0.1" />
+      <PackageReference Include="Forge.Core.Logger" />
     </ItemGroup>
 
 </Project>

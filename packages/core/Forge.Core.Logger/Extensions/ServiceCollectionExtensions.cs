@@ -1,34 +1,44 @@
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Serilog;
 
-namespace Forge.Core.Logger.Extensions
+namespace Forge.Core.Logger.Extensions;
+
+/// <summary>
+/// Extension methods for registering the Forge.Core.Logger with dependency injection.
+/// </summary>
+public static class ServiceCollectionExtensions
 {
     /// <summary>
-    /// Extension methods for registering the Forge.Core.Logger with a dependency injection container.
+    /// Adds the Forge.Core.Logger to the DI container.
+    /// It loads ForgeLogger configuration from appsettings.json if available, otherwise applies default settings.
     /// </summary>
-    public static class ServiceCollectionExtensions
+    public static IServiceCollection AddForgeLogger(this IServiceCollection services, IConfiguration? configuration = null)
     {
-        /// <summary>
-        /// Adds the default Forge.Core.Logger implementation to the service collection with console logging.
-        /// </summary>
-        /// <param name="services">The IServiceCollection to add the logger to.</param>
-        /// <returns>The updated IServiceCollection for chaining.</returns>
-        public static IServiceCollection AddForgeLogger(this IServiceCollection services)
+        var loggerConfig = new LoggerConfiguration();
+        
+        if (configuration != null && configuration.GetSection("ForgeLogger").Exists())
         {
-            return services.AddSingleton<ILogger, Abstractions.Logger>();
+            loggerConfig.ReadFrom.Configuration(configuration);
+        }
+        else
+        {
+            loggerConfig.MinimumLevel.Information()
+                .WriteTo.Console();
         }
 
-        /// <summary>
-        /// Adds a customized Forge.Core.Logger implementation to the service collection with a user-defined configuration.
-        /// </summary>
-        /// <param name="services">The IServiceCollection to add the logger to.</param>
-        /// <param name="configure">An action to configure the LoggerConfiguration instance.</param>
-        /// <returns>The updated IServiceCollection for chaining.</returns>
-        public static IServiceCollection AddForgeLogger(this IServiceCollection services, Action<LoggerConfiguration> configure)
+        var logger = loggerConfig.CreateLogger();
+        Log.Logger = logger;
+
+        services.AddSingleton<ILogger, Abstractions.Logger>();
+        
+        services.AddLogging(loggingBuilder =>
         {
-            var config = new LoggerConfiguration();
-            configure(config);
-            return services.AddSingleton<ILogger>(new Abstractions.Logger(config));
-        }
+            loggingBuilder.ClearProviders();
+            loggingBuilder.AddSerilog(logger, dispose: true);
+        });
+
+        return services;
     }
 }
