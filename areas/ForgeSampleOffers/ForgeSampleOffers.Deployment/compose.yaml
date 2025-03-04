@@ -1,0 +1,12 @@
+﻿services:
+  forgesampleoffers.webapi:
+    image: forgesampleoffers.webapi
+    build:
+      context: .
+      dockerfile: areas/ForgeSampleOffers/ForgeSampleOffers.WebApi/Dockerfile
+
+  forgesampleoffers.webapi-1:
+    image: forgesampleoffers.webapi-1
+    build:
+      context: .
+      dockerfile: ForgeSampleOffers.WebApi/Dockerfile

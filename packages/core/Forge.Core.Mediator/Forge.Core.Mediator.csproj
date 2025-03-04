@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <AssemblyName>Forge.Core.Mediator</AssemblyName>
+        <RootNamespace>Forge.Core.Mediator</RootNamespace>
+        <Nullable>enable</Nullable>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <ImplicitUsings>enable</ImplicitUsings>
+
+        <Version>1.0.0</Version>
+        <Authors>bit</Authors>
+        <Description>Mediator for handle logic</Description>
+        <PackageId>Forge.Core.Mediator</PackageId>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+</Project>

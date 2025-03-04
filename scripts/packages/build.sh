@@ -1,0 +1,116 @@
+#!/bin/bash
+
+# Get the script's directory and project root
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+ROOT_DIR="$(cd "$SCRIPT_DIR/../../" && pwd)"
+
+# Paths relative to project root
+CONFIG_FILE="$SCRIPT_DIR/config.yaml"
+OUTPUT_DIR="$ROOT_DIR/packages/output"
+LOCAL_NUGET_SOURCE="$HOME/.nuget/local"
+
+# Ensure yq is installed
+if ! command -v yq &> /dev/null; then
+    echo "❌ Error: 'yq' is required but not installed."
+    echo "Install it via: sudo apt install yq (Ubuntu) or brew install yq (MacOS)."
+    exit 1
+fi
+
+# Ensure the output directory and NuGet repository exist
+mkdir -p "$OUTPUT_DIR"
+mkdir -p "$LOCAL_NUGET_SOURCE"
+
+# Function to display help
+show_help() {
+    echo "📖 Usage: ./build.sh {build|pack|publish|clean|help}"
+    echo ""
+    echo "Available commands:"
+    echo "  build    - Build all projects from config.yaml"
+    echo "  pack     - Build and package all projects"
+    echo "  publish  - Build, package, and publish all projects to local NuGet repo"
+    echo "  clean    - Clean all projects and remove output files"
+    echo "  help     - Show this help message"
+    echo ""
+    echo "Example usage:"
+    echo "  ./build.sh build"
+    echo "  ./build.sh pack"
+    echo "  ./build.sh publish"
+    echo "  ./build.sh clean"
+    echo ""
+    exit 0
+}
+
+# Function to build a project
+build() {
+    local project_path="$1"
+    local abs_project_path="$ROOT_DIR/$project_path"
+    echo "🔨 Building: $abs_project_path"
+    dotnet build "$abs_project_path" --configuration Release
+}
+
+# Function to package a project
+pack() {
+    local project_path="$1"
+    local package_version="$2"
+    local abs_project_path="$ROOT_DIR/$project_path"
+    local package_name=$(basename "$abs_project_path" .csproj)  # Extracts package name
+    echo "📦 Creating NuGet package: $package_name (Version: $package_version)"
+    dotnet pack "$abs_project_path" --configuration Release --output "$OUTPUT_DIR" /p:Version="$package_version"
+}
+
+# Function to publish a NuGet package
+publish() {
+    local package_name="$1"
+    local package_version="$2"
+    local nupkg_path="$OUTPUT_DIR/$package_name.$package_version.nupkg"
+
+    if [[ ! -f "$nupkg_path" ]]; then
+        echo "❌ Error: Package file not found: $nupkg_path"
+        exit 1
+    fi
+
+    echo "🚀 Publishing: $package_name (Version: $package_version)"
+    dotnet nuget add source "$LOCAL_NUGET_SOURCE" --name local || true
+    dotnet nuget push "$nupkg_path" --source "$LOCAL_NUGET_SOURCE" --skip-duplicate
+}
+
+# Function to clean a project
+clean() {
+    local project_path="$1"
+    local abs_project_path="$ROOT_DIR/$project_path"
+    echo "🧹 Cleaning: $abs_project_path"
+    dotnet clean "$abs_project_path"
+    rm -rf "$OUTPUT_DIR"
+}
+
+# Process each package from config.yaml
+process_packages() {
+    local command="$1"
+
+    if [[ ! -f "$CONFIG_FILE" ]]; then
+        echo "❌ Error: Config file not found at $CONFIG_FILE"
+        exit 1
+    fi
+
+    yq e '.packages[] | .name + " " + .version + " " + .path' "$CONFIG_FILE" | while read -r line; do
+        package_name=$(echo "$line" | awk '{print $1}')
+        package_version=$(echo "$line" | awk '{print $2}')
+        project_path=$(echo "$line" | awk '{print $3}')
+
+        case "$command" in
+            build) build "$project_path" ;;
+            pack) build "$project_path" && pack "$project_path" "$package_version" ;;
+            publish) build "$project_path" && pack "$project_path" "$package_version" && publish "$package_name" "$package_version" ;;
+            clean) clean "$project_path" ;;
+            *) show_help ;;
+        esac
+    done
+}
+
+# Check if no parameter was given or if user asks for help
+if [[ -z "$1" || "$1" == "help" ]]; then
+    show_help
+fi
+
+# Execute command for all packages
+process_packages "$1"
