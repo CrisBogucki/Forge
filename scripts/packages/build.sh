@@ -31,12 +31,6 @@ show_help() {
     echo "  clean    - Clean all projects and remove output files"
     echo "  help     - Show this help message"
     echo ""
-    echo "Example usage:"
-    echo "  ./build.sh build"
-    echo "  ./build.sh pack"
-    echo "  ./build.sh publish"
-    echo "  ./build.sh clean"
-    echo ""
     exit 0
 }
 
@@ -55,17 +49,28 @@ pack() {
     local project_path="$1"
     local package_version="$2"
     local abs_project_path="$ROOT_DIR/$project_path"
+    # shellcheck disable=SC2155
     local project_dir="$(dirname "$abs_project_path")"  # Get project directory
     local abs_readme_path="$project_dir/README.md"      # Assume README.md is in the same directory
+    # shellcheck disable=SC2155
     local package_name=$(basename "$abs_project_path" .csproj)  # Extract package name
-
+    local package_file="$OUTPUT_DIR/$package_name.$package_version.nupkg"
+    
     # Check if README.md exists
     if [[ -f "$abs_readme_path" ]]; then
         echo "📝 Including README.md: $abs_readme_path"
-        dotnet pack "$abs_project_path" --configuration Release --output "$OUTPUT_DIR" -p:Version="$package_version" -p:PackageReadmeFile="$abs_readme_path"
+        dotnet pack "$abs_project_path" --configuration Release --output "$OUTPUT_DIR" -p:Version="$package_version"
     else
         echo "⚠️ WARNING: README.md not found in $project_dir. Packaging without README."
         dotnet pack "$abs_project_path" --configuration Release --output "$OUTPUT_DIR" -p:Version="$package_version"
+    fi
+
+#    # ✅ Verify package integrity after packing
+    if [[ -f "$package_file" ]]; then
+        echo "✅ Verifying package: $package_file"
+        if ! dotnet nuget verify --all "$package_file"; then
+            echo "⚠️ WARNING: Package verification failed (but continuing)."
+        fi
     fi
 }
 
@@ -91,7 +96,9 @@ clean() {
     local abs_project_path="$ROOT_DIR/$project_path"
     
     echo "🧹 Cleaning: $abs_project_path"
-    dotnet clean "$abs_project_path"
+    dotnet clean "$abs_project_path" --configuration Debug
+    dotnet clean "$abs_project_path" --configuration Release
+
     rm -rf "$OUTPUT_DIR"
 }
 
