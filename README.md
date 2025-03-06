@@ -56,36 +56,45 @@ Forge
 └── README.md                              # Project documentation  
 ```  
 
-## 🚀 Getting Started
-To run the project locally, follow these steps:
-1. **Clone the repository:**
+
+## 🚀 Getting Started  
+To run the project locally, follow these steps:  
+
+1. **Clone the repository:**  
    ```sh
-    git clone https://github.com/CrisBogucki/Forge.git  
-    cd Forge  
+   git clone https://github.com/CrisBogucki/Forge.git  
+   cd Forge  
    ```  
-2. **Nuget build dependencies:**`
+
+2. **NuGet build dependencies:**
    ```sh
-    ./scripts/packages/build.sh  build
+   ./scripts/packages/build.sh build  
    ```  
-3. **Nuget pack dependencies:**`
+
+3. **NuGet pack dependencies:**
    ```sh
-    ./scripts/packages/build.sh  pack
-   ``` 
-4. **Nuget publish dependencies:**`
-   ```sh
-    ./scripts/packages/build.sh  publish
+   ./scripts/packages/build.sh pack  
    ```  
+
+4. **NuGet publish dependencies:**
+   ```sh
+   ./scripts/packages/build.sh publish  
+   ```  
+
 5. **Build the application:**
    ```sh
-      dotnet build ./areas/ForgeSampleOffers/ForgeSampleOffers.WebApi/ForgeSampleOffers.WebApi.csproj  
+   dotnet build ./areas/ForgeSampleOffers/ForgeSampleOffers.WebApi/ForgeSampleOffers.WebApi.csproj  
    ```  
+
 6. **Run the application:**
    ```sh
-    dotnet run --project ./areas/ForgeSampleOffers/ForgeSampleOffers.WebApi/ForgeSampleOffers.WebApi.csproj  
-   ```
+   dotnet run --project ./areas/ForgeSampleOffers/ForgeSampleOffers.WebApi/ForgeSampleOffers.WebApi.csproj  
+   ```  
+
 7. **Access the API:**
-    - Open Swagger UI at: `http://localhost:5000/swagger`
-    - Use Postman or another client to test the API
+   - Open Swagger UI at: `http://localhost:5000/swagger`
+   - Use Postman or another client to test the API endpoints
+
 
 ## 🛠️ Contributing
 Contributions, issues, and feature requests are welcome! Feel free to fork the repository, create a new branch, and submit a pull request.
