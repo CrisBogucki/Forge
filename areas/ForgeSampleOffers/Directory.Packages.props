@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <DefaultNugetPackageVersion>1.0.5</DefaultNugetPackageVersion>
+        <DefaultNugetPackageVersion>1.0.6</DefaultNugetPackageVersion>
     </PropertyGroup>
     
     <!-- Tests -->
