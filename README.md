@@ -1,31 +1,32 @@
-Jasne! Oto rozszerzona wersja Twojego README:
-
----
-
 # 🚀 Forge - A .NET Demonstration Project
 
 Forge is a demonstration project showcasing best practices and architectural approaches in .NET.  
 It serves as a sandbox for implementing and testing various techniques, patterns, and technologies used in modern .NET development.
 
+
 ## ✨ Goals & Key Features
-- ✅ Exploring clean and modular .NET architectures
-- ✅ Implementing best practices for maintainability and scalability
-- ✅ Demonstrating Dependency Injection (DI) and IoC containers
-- ✅ Showcasing logging strategies with Serilog (`Forge.Logger`)
-- ✅ Working with ASP.NET Core and .NET API design
-- ✅ Applying CQRS, Mediator, and Domain-Driven Design (DDD) principles
-- ✅ Automated builds, testing, and CI/CD pipeline integration
+✅ Exploring clean and modular .NET architectures  
+✅ Implementing best practices for maintainability and scalability  
+✅ Demonstrating Dependency Injection (DI) and IoC containers  
+✅ Showcasing logging strategies with Serilog (Forge.Logger)  
+✅ Working with ASP.NET Core and .NET API design  
+✅ Applying CQRS, Mediator, and Domain-Driven Design (DDD) principles  
+✅ Automated builds, testing, and CI/CD pipeline integration
+
 
 ## 🏗️ Technologies & Tools
+
 Forge leverages modern .NET technologies and best practices, including:
-- **.NET 8** – Latest runtime for high-performance applications
-- **ASP.NET Core** – Web API development with modularity and performance in mind
-- **Entity Framework Core** – ORM for data access and migrations
-- **Serilog** – Structured logging with support for various sinks
-- **MediatR** – Implementation of the Mediator pattern for clean architecture
-- **FluentValidation** – Model validation using expressive rules
-- **Swagger (Swashbuckle)** – API documentation for better usability
-- **xUnit & Moq** – Unit testing framework and mocking library
+
+🚀 **.NET 8** – Latest runtime for high-performance applications  
+🌐 **ASP.NET Core** – Web API development with modularity and performance in mind  
+🗃️ **Entity Framework Core** – ORM for data access and migrations  
+📜 **Serilog** – Structured logging with support for various sinks  
+🎯 **MediatR** – Implementation of the Mediator pattern for clean architecture  
+✅ **FluentValidation** – Model validation using expressive rules  
+📖 **Swagger (Swashbuckle)** – API documentation for better usability  
+🧪 **xUnit & Moq** – Unit testing framework and mocking library
+
 
 ## 📂 Project Structure
 The project follows a modular architecture for maintainability and scalability:
