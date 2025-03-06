@@ -31,29 +31,29 @@ Forge leverages modern .NET technologies and best practices, including:
 ## 📂 Project Structure
 The project follows a modular architecture for maintainability and scalability:
 ```
-/Forge  
-├── areas       # Forge areas for modular components
-│   └── ForgeSampleOffers                           # Sample component for testing solutions     
-│       ├── Directory.Build.props                   # MSBuild properties for the component
-│       ├── ForgeSampleOffers.App                   # Application project for the component
-│       ├── ForgeSampleOffers.Deployment            # Deployment project for the component
-│       ├── ForgeSampleOffers.Domain                # Domain project for the component
-│       ├── ForgeSampleOffers.E2eTests              # End-to-end tests project for the component
-│       ├── ForgeSampleOffers.IntegrationTests      # Integration tests project for the component
-│       ├── ForgeSampleOffers.Tests                 # Unit tests project for the component
-│       └── ForgeSampleOffers.WebApi                # Web API project for the component
-├── packages                        
-│   └── core/    # Forge core packages
-│       ├── Forge.Core.Logger/      # Forge core logger package
-│       └── Forge.Core.Mediator/    # Forge core mediator package
-├── scripts                         
-│   ├── areas                            
-│   ├── packages/                   
-│   │   ├── build.sh     # Nuget package script for build, pack, publish and clean
-│   │   ├── config.yaml  # Build script configuration
-│   │   └── README.md    # Script documentation
-│   └── output/    # Temp build nuget package output
-└── README.md      # Project documentation
+Forge  
+├── areas                                  # Forge areas for modular components  
+│   └── ForgeSampleOffers                  # Sample component for testing solutions  
+│       ├── Directory.Build.props          # MSBuild properties for the component  
+│       ├── ForgeSampleOffers.App          # Application project for the component  
+│       ├── ForgeSampleOffers.Deployment   # Deployment project for the component  
+│       ├── ForgeSampleOffers.Domain       # Domain project for the component  
+│       ├── ForgeSampleOffers.E2eTests     # End-to-end tests project for the component  
+│       ├── ForgeSampleOffers.IntegrationTests # Integration tests project for the component  
+│       ├── ForgeSampleOffers.Tests        # Unit tests project for the component  
+│       └── ForgeSampleOffers.WebApi       # Web API project for the component  
+├── packages                               # Forge core packages  
+│   └── core/  
+│       ├── Forge.Core.Logger/             # Forge core logger package  
+│       └── Forge.Core.Mediator/           # Forge core mediator package  
+├── scripts                                # Build and deployment scripts  
+│   ├── areas/                             # Scripts related to areas  
+│   ├── packages/                          # Scripts for package management  
+│   │   ├── build.sh                       # NuGet package script for build, pack, publish, and clean  
+│   │   ├── config.yaml                    # Build script configuration  
+│   │   └── README.md                      # Script documentation  
+│   └── output/                            # Temp build NuGet package output  
+└── README.md                              # Project documentation  
 ```  
 
 ## 🚀 Getting Started
