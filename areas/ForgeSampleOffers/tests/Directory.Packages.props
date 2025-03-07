@@ -11,9 +11,4 @@
         <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.3"/>
     </ItemGroup>
     
-    <!-- Forge nuget version -->
-    <ItemGroup>
-        <PackageVersion Include="Forge.Core.Logger" Version="$(DefaultNugetPackageVersion)"/>
-    </ItemGroup>
-    
 </Project>

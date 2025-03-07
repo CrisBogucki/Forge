@@ -1,0 +1,11 @@
+<Project>
+    <PropertyGroup>
+        <DefaultNugetPackageVersion>1.0.6</DefaultNugetPackageVersion>
+    </PropertyGroup>
+    
+    <!-- Forge nuget version -->
+    <ItemGroup>
+        <PackageVersion Include="Forge.Core.Logger" Version="$(DefaultNugetPackageVersion)"/>
+    </ItemGroup>
+    
+</Project>
