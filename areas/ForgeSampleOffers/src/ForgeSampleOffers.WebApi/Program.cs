@@ -26,11 +26,11 @@ app.MapGet("/weatherforecast", () =>
     return forecast;
 });
 
-var _logger = app.Services.GetRequiredService<Forge.Core.Logger.ILogger>();
+var logger = app.Services.GetRequiredService<ILogger<Program>>();
 
-_logger.LogInformation("Aplikacja uruchomiona!");
-_logger.LogWarning("Ostrzeżenie!");
-_logger.LogError("Błąd!");
+logger.LogInformation("Aplikacja uruchomiona!");
+logger.LogWarning("Ostrzeżenie!");
+logger.LogError("Błąd!");
 
 app.Run();
 
