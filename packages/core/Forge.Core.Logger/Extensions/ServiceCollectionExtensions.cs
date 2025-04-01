@@ -17,15 +17,11 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddForgeLogger(this IServiceCollection services, IConfiguration? configuration = null)
     {
         var loggerConfig = new LoggerConfiguration();
-        
-        if (configuration != null && configuration.GetSection("ForgeLogger").Exists())
+        var forgeLoggerSection = configuration?.GetSection("ForgeLogger");
+
+        if (forgeLoggerSection.Exists())
         {
-            loggerConfig.ReadFrom.Configuration(configuration);
-        }
-        else
-        {
-            loggerConfig.MinimumLevel.Information()
-                .WriteTo.Console();
+            loggerConfig.ReadFrom.Configuration(forgeLoggerSection);
         }
 
         var logger = loggerConfig.CreateLogger();

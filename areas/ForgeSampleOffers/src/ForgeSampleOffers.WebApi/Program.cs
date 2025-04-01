@@ -2,7 +2,7 @@ using Forge.Core.Logger.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddForgeLogger();
+builder.Services.AddForgeLogger(builder.Configuration);
 
 var app = builder.Build();
 

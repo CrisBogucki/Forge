@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <DefaultNugetPackageVersion>1.0.6</DefaultNugetPackageVersion>
+        <DefaultNugetPackageVersion>1.0.9</DefaultNugetPackageVersion>
     </PropertyGroup>
     
     <!-- Forge nuget version -->

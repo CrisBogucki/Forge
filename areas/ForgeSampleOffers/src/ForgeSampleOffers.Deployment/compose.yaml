@@ -4,9 +4,18 @@
     build:
       context: .
       dockerfile: areas/ForgeSampleOffers/ForgeSampleOffers.WebApi/Dockerfile
-
-  forgesampleoffers.webapi-1:
-    image: forgesampleoffers.webapi-1
-    build:
-      context: .
-      dockerfile: ForgeSampleOffers.WebApi/Dockerfile
+    container_name: forge-sampleoffers.webapi       
+      
+  seq:
+    image: datalust/seq
+    container_name: forge-seq
+    restart: always
+    ports:
+      - "5341:80" # Port SEQ
+    environment:
+      - ACCEPT_EULA=Y
+    volumes:
+      - seq-data:/data
+  
+volumes:
+  seq-data:
