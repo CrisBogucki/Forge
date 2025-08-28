@@ -1,11 +1,7 @@
 <Project>
-    <PropertyGroup>
-        <DefaultNugetPackageVersion>1.0.9</DefaultNugetPackageVersion>
-    </PropertyGroup>
-    
-    <!-- Forge nuget version -->
     <ItemGroup>
-        <PackageVersion Include="Forge.Core.Logger" Version="$(DefaultNugetPackageVersion)"/>
+        <PackageVersion Include="Forge.Core.Mediator" Version="1.0.21"/>
+        <PackageVersion Include="Forge.Core.Logger" Version="1.0.21"/>
+        <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.8"/>
     </ItemGroup>
-    
 </Project>

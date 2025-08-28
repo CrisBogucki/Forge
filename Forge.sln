@@ -7,6 +7,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ForgeSampleOffers", "ForgeSampleOffers", "{FAAAA127-1A28-4E01-8322-809B94155CA8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{FA30BDA0-8EED-4B0C-9620-77F609FAC10F}"
+	ProjectSection(SolutionItems) = preProject
+		areas\ForgeSampleOffers\src\Directory.Packages.props = areas\ForgeSampleOffers\src\Directory.Packages.props
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forge.Core.Mediator", "packages\core\Forge.Core.Mediator\Forge.Core.Mediator.csproj", "{8E01BA92-0E88-4DB1-A7BA-77BBA462B046}"
 EndProject
@@ -39,13 +42,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgeSampleOffers.Domain", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgeSampleOffers.WebApi", "areas\ForgeSampleOffers\src\ForgeSampleOffers.WebApi\ForgeSampleOffers.WebApi.csproj", "{65C01E9C-4AF0-42A5-B019-407380A02746}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgeSampleOffers.Deployment", "areas\ForgeSampleOffers\src\ForgeSampleOffers.Deployment\ForgeSampleOffers.Deployment.dcproj", "{C72B4AA4-BC7F-4110-86A5-74BE3B29B83F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgeSampleOffers.E2eTests", "areas\ForgeSampleOffers\tests\ForgeSampleOffers.E2eTests\ForgeSampleOffers.E2eTests.csproj", "{A0329CFF-D390-4CCF-9D80-716C4EB2F152}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgeSampleOffers.IntegrationTests", "areas\ForgeSampleOffers\tests\ForgeSampleOffers.IntegrationTests\ForgeSampleOffers.IntegrationTests.csproj", "{E1AABEA0-F28A-4495-B690-E4CB772FA5D0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForgeSampleOffers.Tests", "areas\ForgeSampleOffers\tests\ForgeSampleOffers.Tests\ForgeSampleOffers.Tests.csproj", "{FE3C77CA-E955-4DA0-80E4-D0D2A92BC753}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forge.Core.Mediator.Tests", "packages\core\Forge.Core.Mediator.Tests\Forge.Core.Mediator.Tests.csproj", "{7D344924-0779-46CB-A3FD-3EBB9D9F8F1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forge.Core.Logger.Tests", "packages\core\Forge.Core.Logger.Tests\Forge.Core.Logger.Tests.csproj", "{5B4DD46A-25E6-41B9-87C8-16F279459C26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,10 +69,11 @@ Global
 		{179D32B4-1AD6-497A-949E-562DCF547A48} = {864E9289-6114-4522-8202-C63827C6A39B}
 		{F42F95C2-9DBD-4F0C-B931-9074CDD21489} = {864E9289-6114-4522-8202-C63827C6A39B}
 		{65C01E9C-4AF0-42A5-B019-407380A02746} = {864E9289-6114-4522-8202-C63827C6A39B}
-		{C72B4AA4-BC7F-4110-86A5-74BE3B29B83F} = {864E9289-6114-4522-8202-C63827C6A39B}
 		{A0329CFF-D390-4CCF-9D80-716C4EB2F152} = {BD174506-BBE8-42D5-84B3-3442A6AACF79}
 		{E1AABEA0-F28A-4495-B690-E4CB772FA5D0} = {BD174506-BBE8-42D5-84B3-3442A6AACF79}
 		{FE3C77CA-E955-4DA0-80E4-D0D2A92BC753} = {BD174506-BBE8-42D5-84B3-3442A6AACF79}
+		{7D344924-0779-46CB-A3FD-3EBB9D9F8F1D} = {FA30BDA0-8EED-4B0C-9620-77F609FAC10F}
+		{5B4DD46A-25E6-41B9-87C8-16F279459C26} = {FA30BDA0-8EED-4B0C-9620-77F609FAC10F}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{8E01BA92-0E88-4DB1-A7BA-77BBA462B046}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -90,10 +96,6 @@ Global
 		{65C01E9C-4AF0-42A5-B019-407380A02746}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65C01E9C-4AF0-42A5-B019-407380A02746}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65C01E9C-4AF0-42A5-B019-407380A02746}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C72B4AA4-BC7F-4110-86A5-74BE3B29B83F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C72B4AA4-BC7F-4110-86A5-74BE3B29B83F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C72B4AA4-BC7F-4110-86A5-74BE3B29B83F}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{C72B4AA4-BC7F-4110-86A5-74BE3B29B83F}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{A0329CFF-D390-4CCF-9D80-716C4EB2F152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A0329CFF-D390-4CCF-9D80-716C4EB2F152}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0329CFF-D390-4CCF-9D80-716C4EB2F152}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -106,5 +108,13 @@ Global
 		{FE3C77CA-E955-4DA0-80E4-D0D2A92BC753}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE3C77CA-E955-4DA0-80E4-D0D2A92BC753}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE3C77CA-E955-4DA0-80E4-D0D2A92BC753}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D344924-0779-46CB-A3FD-3EBB9D9F8F1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D344924-0779-46CB-A3FD-3EBB9D9F8F1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D344924-0779-46CB-A3FD-3EBB9D9F8F1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D344924-0779-46CB-A3FD-3EBB9D9F8F1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B4DD46A-25E6-41B9-87C8-16F279459C26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B4DD46A-25E6-41B9-87C8-16F279459C26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B4DD46A-25E6-41B9-87C8-16F279459C26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B4DD46A-25E6-41B9-87C8-16F279459C26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,40 +1,17 @@
-using Forge.Core.Logger.Extensions;
+using ForgeSampleOffers.WebApi;
+using ForgeSampleOffers.WebApi.Handlers;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddForgeLogger(builder.Configuration);
+Startup.ConfigureBuilder(builder);
+Startup.ConfigureServices(builder.Services, builder.Configuration);
 
 var app = builder.Build();
 
-app.UseHttpsRedirection();
+Startup.ConfigureMiddleware(app);
+Startup.ConfigureEndpoints(app);
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+Logger.LogStartupMessages(app);
+await Handlers.Handle(app);
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-            new WeatherForecast
-            (
-                DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                Random.Shared.Next(-20, 55),
-                summaries[Random.Shared.Next(summaries.Length)]
-            ))
-        .ToArray();
-    return forecast;
-});
-
-var logger = app.Services.GetRequiredService<ILogger<Program>>();
-
-logger.LogInformation("Aplikacja uruchomiona!");
-logger.LogWarning("Ostrzeżenie!");
-logger.LogError("Błąd!");
-
-app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
+await app.RunAsync();
