@@ -1,4 +1,3 @@
-using Forge.Core.Mediator;
 using ForgeSampleOffers.App.LogExstensions;
 
 namespace ForgeSampleOffers.WebApi.Handlers;
